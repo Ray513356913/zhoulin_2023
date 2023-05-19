@@ -239,7 +239,7 @@ function _3号轨道3 () {
     }
     neZha.stopAllMotor()
     basic.pause(800)
-    巡线毫秒(610)
+    巡线毫秒(650)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 210)
     basic.pause(200)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
@@ -344,7 +344,7 @@ function 第二段 () {
     neZha.stopAllMotor()
     basic.pause(500)
     自动巡线速度 = 30
-    巡线毫秒(950)
+    巡线毫秒(920)
     neZha.stopAllMotor()
     basic.pause(500)
     PlanetX_Basic.Trackbit_get_state_value()
@@ -405,7 +405,7 @@ function 第二段 () {
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
     basic.pause(200)
     左右轮差速(25, 25)
-    basic.pause(200)
+    basic.pause(400)
     neZha.stopAllMotor()
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 90)
 }
@@ -432,7 +432,7 @@ function _2号轨道2 () {
     }
     neZha.stopAllMotor()
     basic.pause(800)
-    巡线毫秒(710)
+    巡线毫秒(810)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 210)
     basic.pause(200)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
@@ -448,7 +448,7 @@ function 左右轮差速 (M1: number, M2: number) {
 function _1号轨道 () {
     自动巡线速度 = 23
     for (let index = 0; index < 2; index++) {
-        巡线毫秒(730)
+        巡线毫秒(700)
         neZha.stopAllMotor()
         basic.pause(500)
     }
@@ -457,7 +457,7 @@ function _1号轨道 () {
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
     basic.pause(200)
     自动巡线速度 = 25
-    巡线毫秒(2300)
+    巡线毫秒(2100)
     neZha.stopAllMotor()
 }
 input.onButtonPressed(Button.B, function () {
@@ -635,7 +635,6 @@ basic.forever(function () {
         PlanetX_AILens.initModule()
         PlanetX_AILens.switchfunc(PlanetX_AILens.FuncList.Card)
         舵机复位()
-        第二段()
         第三段()
     } else {
         手动阶段()
