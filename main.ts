@@ -31,7 +31,7 @@ function 第三段 () {
     neZha.stopAllMotor()
     basic.pause(300)
     左右轮差速(60, -10)
-    basic.pause(700)
+    basic.pause(1200)
     neZha.stopAllMotor()
     basic.pause(200)
     while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1))) {
@@ -39,7 +39,7 @@ function 第三段 () {
     }
     neZha.stopAllMotor()
     basic.pause(300)
-    自动巡线速度 = 25
+    自动巡线速度 = 30
     巡线毫秒(150)
     while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_1)))) {
         PlanetX_Basic.Trackbit_get_state_value()
@@ -69,6 +69,8 @@ function 第三段 () {
     } else if (_123位置 == 3) {
         _3号轨道3()
     }
+    neZha.stopAllMotor()
+    basic.pause(300)
 }
 function 亮灯32 () {
     if (ABC位置 == 2 || ABC位置 == 4) {
@@ -225,7 +227,7 @@ function 自动左转 () {
 function _3号轨道3 () {
     自动巡线速度 = 23
     PlanetX_Basic.Trackbit_get_state_value()
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1)))) {
+    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1))) {
         PlanetX_Basic.Trackbit_get_state_value()
         高级巡线()
     }
@@ -233,7 +235,7 @@ function _3号轨道3 () {
     basic.pause(800)
     自动前进()
     basic.pause(300)
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1)))) {
+    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))) {
         PlanetX_Basic.Trackbit_get_state_value()
         高级巡线()
     }
@@ -334,7 +336,7 @@ function 第二段 () {
     巡线毫秒(2100)
     neZha.stopAllMotor()
     basic.pause(300)
-    自动巡线速度 = 25
+    自动巡线速度 = 30
     strip.clear()
     PlanetX_Basic.Trackbit_get_state_value()
     while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))) {
@@ -426,7 +428,7 @@ function 左转找黑线 () {
 function _2号轨道2 () {
     自动巡线速度 = 23
     PlanetX_Basic.Trackbit_get_state_value()
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1)))) {
+    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.One, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1))) {
         PlanetX_Basic.Trackbit_get_state_value()
         高级巡线()
     }
@@ -448,7 +450,7 @@ function 左右轮差速 (M1: number, M2: number) {
 function _1号轨道 () {
     自动巡线速度 = 23
     for (let index = 0; index < 2; index++) {
-        巡线毫秒(700)
+        巡线毫秒(650)
         neZha.stopAllMotor()
         basic.pause(500)
     }
@@ -457,7 +459,7 @@ function _1号轨道 () {
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
     basic.pause(200)
     自动巡线速度 = 25
-    巡线毫秒(2200)
+    巡线毫秒(1900)
     neZha.stopAllMotor()
 }
 input.onButtonPressed(Button.B, function () {
@@ -612,7 +614,7 @@ function 第四段2 () {
     neZha.stopAllMotor()
     basic.pause(800)
     自动巡线速度 = 30
-    巡线毫秒(620)
+    巡线毫秒(675)
     neZha.stopAllMotor()
     basic.pause(800)
     PlanetX_Basic.Trackbit_get_state_value()
