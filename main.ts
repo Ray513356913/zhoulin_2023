@@ -57,7 +57,7 @@ function 第三段 () {
     neZha.stopAllMotor()
     basic.pause(800)
     左右轮差速(-40, -40)
-    basic.pause(300)
+    basic.pause(200)
     neZha.stopAllMotor()
     basic.pause(300)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 180)
@@ -241,7 +241,7 @@ function _3号轨道3 () {
     }
     neZha.stopAllMotor()
     basic.pause(1000)
-    巡线毫秒(650)
+    巡线毫秒(640)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 210)
     basic.pause(200)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
@@ -346,7 +346,7 @@ function 第二段 () {
     neZha.stopAllMotor()
     basic.pause(500)
     自动巡线速度 = 30
-    巡线毫秒(1000)
+    巡线毫秒(980)
     neZha.stopAllMotor()
     basic.pause(500)
     PlanetX_Basic.Trackbit_get_state_value()
@@ -450,7 +450,7 @@ function 左右轮差速 (M1: number, M2: number) {
 function _1号轨道 () {
     自动巡线速度 = 23
     for (let index = 0; index < 2; index++) {
-        巡线毫秒(650)
+        巡线毫秒(630)
         neZha.stopAllMotor()
         basic.pause(500)
     }
@@ -487,30 +487,29 @@ function 第四段 () {
     neZha.stopAllMotor()
     basic.pause(800)
     自动巡线速度 = 30
-    巡线毫秒(840)
+    巡线毫秒(670)
     neZha.stopAllMotor()
     basic.pause(800)
-    左右轮差速(30, -30)
-    basic.pause(350)
+    PlanetX_Basic.Trackbit_get_state_value()
+    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))) {
+        PlanetX_Basic.Trackbit_get_state_value()
+        左右轮差速(30, -30)
+    }
     neZha.stopAllMotor()
     basic.pause(800)
     while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1))) {
         PlanetX_Basic.Trackbit_get_state_value()
-        左右轮差速(0, -40)
+        左右轮差速(30, -30)
     }
     neZha.stopAllMotor()
     basic.pause(800)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 150)
     basic.pause(200)
-    自动巡线速度 = 25
-    巡线毫秒(500)
-    neZha.stopAllMotor()
-    basic.pause(800)
     左右轮差速(25, 25)
     basic.pause(600)
     neZha.stopAllMotor()
     basic.pause(300)
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 30)
+    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 0)
     basic.pause(1500)
     左右轮差速(-40, -40)
     basic.pause(500)
@@ -603,60 +602,6 @@ function 自动右转 () {
     neZha.setMotorSpeed(neZha.MotorList.M1, 1 * 自动巡线速度)
     neZha.setMotorSpeed(neZha.MotorList.M2, 5)
 }
-function 第四段2 () {
-    自动巡线速度 = 25
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 315)
-    PlanetX_Basic.Trackbit_get_state_value()
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1) && (PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1)))) {
-        PlanetX_Basic.Trackbit_get_state_value()
-        高级巡线()
-    }
-    neZha.stopAllMotor()
-    basic.pause(800)
-    自动巡线速度 = 30
-    巡线毫秒(675)
-    neZha.stopAllMotor()
-    basic.pause(800)
-    PlanetX_Basic.Trackbit_get_state_value()
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))) {
-        PlanetX_Basic.Trackbit_get_state_value()
-        左右轮差速(30, -30)
-    }
-    neZha.stopAllMotor()
-    basic.pause(800)
-    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Two, PlanetX_Basic.TrackbitType.State_1))) {
-        PlanetX_Basic.Trackbit_get_state_value()
-        左右轮差速(30, -30)
-    }
-    neZha.stopAllMotor()
-    basic.pause(800)
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 150)
-    basic.pause(200)
-    左右轮差速(25, 25)
-    basic.pause(600)
-    neZha.stopAllMotor()
-    basic.pause(300)
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 0)
-    basic.pause(1500)
-    左右轮差速(-40, -40)
-    basic.pause(500)
-    neZha.stopAllMotor()
-    basic.pause(200)
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 240)
-    左右轮差速(-30, 30)
-    basic.pause(300)
-    左转找黑线()
-    自动巡线速度 = 40
-    巡线毫秒(200)
-    PlanetX_Basic.Trackbit_get_state_value()
-    while (!(PlanetX_Basic.TrackbitState(PlanetX_Basic.TrackbitStateType.Tracking_State_0))) {
-        PlanetX_Basic.Trackbit_get_state_value()
-        高级巡线()
-    }
-    左右轮差速(40, 100)
-    basic.pause(800)
-    neZha.stopAllMotor()
-}
 function 手动左转 () {
     if (手动电机速度 > 80) {
         neZha.setMotorSpeed(neZha.MotorList.M1, -0.3 * 手动电机速度)
@@ -688,10 +633,14 @@ basic.showNumber(0)
 // 230519
 basic.forever(function () {
     if (PlanetX_Basic.Crash(PlanetX_Basic.DigitalRJPin.J2)) {
+        PlanetX_AILens.initModule()
+        PlanetX_AILens.switchfunc(PlanetX_AILens.FuncList.Card)
+        basic.clearScreen()
         舵机复位()
+        第一段()
         第二段()
         第三段()
-        第四段2()
+        第四段()
     } else {
         手动阶段()
     }
