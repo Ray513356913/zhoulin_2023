@@ -637,7 +637,7 @@ neZha.stopAllMotor()
 strip = PlanetX_Display.create(PlanetX_Display.DigitalRJPin.J1, 24, PlanetX_Display.NeoPixelMode.RGB)
 倒球角度S1 = 170
 捡球角度S2 = 245
-手动电机速度 = 100
+手动电机速度 = 60
 自动巡线速度 = 40
 basic.showNumber(0)
 // 230524
