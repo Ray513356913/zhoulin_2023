@@ -92,7 +92,7 @@ function 巡线毫秒 (数字: number) {
 }
 function 舵机复位 () {
     // 倒球
-    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S1, 170)
+    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S1, 160)
     // 捡球
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S2, 245)
     // 前叉
@@ -129,7 +129,7 @@ function 手动阶段 () {
         }
         neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S1, 倒球角度S1)
     } else if (PlanetX_Basic.get_Attention_Value(PlanetX_Basic.value_level.Right2)) {
-        倒球角度S1 = 170
+        倒球角度S1 = 160
         neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S1, 倒球角度S1)
         basic.pause(10)
     } else if (PlanetX_Basic.get_Attention_Value(PlanetX_Basic.value_level.Tri)) {
@@ -143,11 +143,7 @@ function 手动阶段 () {
         basic.pause(10)
     } else if (PlanetX_Basic.get_Attention_Value(PlanetX_Basic.value_level.X)) {
         手动电机速度 = 50
-        if (捡球角度S2 <= 140) {
-            捡球角度S2 += 0
-        } else {
-            捡球角度S2 += -20
-        }
+        捡球角度S2 = 145
         neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S2, 捡球角度S2)
         basic.pause(10)
     } else if (PlanetX_Basic.get_Attention_Value(PlanetX_Basic.value_level.Sele)) {
@@ -241,7 +237,7 @@ function _3号轨道3 () {
     }
     neZha.stopAllMotor()
     basic.pause(1200)
-    巡线毫秒(550)
+    巡线毫秒(560)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 210)
     basic.pause(200)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 245)
@@ -440,7 +436,7 @@ function _2号轨道2 () {
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S3, 245)
     basic.pause(200)
     自动巡线速度 = 25
-    巡线毫秒(1200)
+    巡线毫秒(1300)
     neZha.stopAllMotor()
 }
 function 左右轮差速 (M1: number, M2: number) {
@@ -450,7 +446,7 @@ function 左右轮差速 (M1: number, M2: number) {
 function _1号轨道 () {
     自动巡线速度 = 25
     for (let index = 0; index < 2; index++) {
-        巡线毫秒(440)
+        巡线毫秒(500)
         neZha.stopAllMotor()
         basic.pause(800)
     }
@@ -467,7 +463,12 @@ function _1号轨道 () {
         PlanetX_Basic.Trackbit_get_state_value()
         高级巡线()
     }
-    巡线毫秒(1000)
+    巡线毫秒(250)
+    while (!(PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Three, PlanetX_Basic.TrackbitType.State_1) && PlanetX_Basic.TrackbitChannelState(PlanetX_Basic.TrackbitChannel.Four, PlanetX_Basic.TrackbitType.State_1))) {
+        PlanetX_Basic.Trackbit_get_state_value()
+        高级巡线()
+    }
+    巡线毫秒(400)
     neZha.stopAllMotor()
 }
 input.onButtonPressed(Button.B, function () {
@@ -495,7 +496,7 @@ function 第四段 () {
     neZha.stopAllMotor()
     basic.pause(800)
     自动巡线速度 = 30
-    巡线毫秒(660)
+    巡线毫秒(640)
     neZha.stopAllMotor()
     basic.pause(800)
     PlanetX_Basic.Trackbit_get_state_value()
@@ -519,6 +520,7 @@ function 第四段 () {
     basic.pause(300)
     neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 0)
     basic.pause(1500)
+    neZha.setServoAngel(neZha.ServoTypeList._360, neZha.ServoList.S4, 40)
     左右轮差速(-40, -40)
     basic.pause(500)
     neZha.stopAllMotor()
@@ -534,7 +536,7 @@ function 第四段 () {
         PlanetX_Basic.Trackbit_get_state_value()
         高级巡线()
     }
-    左右轮差速(40, 100)
+    左右轮差速(60, 100)
     basic.pause(800)
     neZha.stopAllMotor()
 }
@@ -597,7 +599,7 @@ function 第一段 () {
     左右轮差速(35, -35)
     basic.pause(150)
     neZha.stopAllMotor()
-    basic.pause(200)
+    basic.pause(0)
     左右轮差速(50, 50)
     basic.pause(100)
     while (!(PlanetX_Basic.TrackbitState(PlanetX_Basic.TrackbitStateType.Tracking_State_5))) {
@@ -606,7 +608,7 @@ function 第一段 () {
     }
     basic.pause(150)
     neZha.stopAllMotor()
-    basic.pause(300)
+    basic.pause(0)
 }
 function 自动右转 () {
     neZha.setMotorSpeed(neZha.MotorList.M1, 1 * 自动巡线速度)
@@ -640,7 +642,7 @@ strip = PlanetX_Display.create(PlanetX_Display.DigitalRJPin.J1, 24, PlanetX_Disp
 手动电机速度 = 60
 自动巡线速度 = 40
 basic.showNumber(0)
-// 230525
+// 230526
 basic.forever(function () {
     if (PlanetX_Basic.Crash(PlanetX_Basic.DigitalRJPin.J2)) {
         PlanetX_AILens.switchfunc(PlanetX_AILens.FuncList.Card)
